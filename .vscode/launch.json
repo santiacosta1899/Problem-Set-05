@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Consigna 5 · todo (≈25 min)",
+      "request": "launch",
+      "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
+      "projectName": "aed-2026-s1",
+      "cwd": "${workspaceFolder}",
+      "vmArgs": "-Xmx4g -Xss512m",
+      "args": "todo"
+    },
+    {
+      "type": "java",
+      "name": "Consigna 5 · candidatos rápido (corrida en vivo)",
+      "request": "launch",
+      "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
+      "projectName": "aed-2026-s1",
+      "cwd": "${workspaceFolder}",
+      "vmArgs": "-Xmx4g -Xss512m",
+      "args": "candidatos rapido"
+    },
+    {
+      "type": "java",
+      "name": "Consigna 5 · contrato del pivote",
+      "request": "launch",
+      "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
+      "projectName": "aed-2026-s1",
+      "cwd": "${workspaceFolder}",
+      "vmArgs": "-Xmx4g -Xss512m",
+      "args": "pivote"
+    },
+    {
+      "type": "java",
+      "name": "Consigna 5 · elegir parte",
+      "request": "launch",
+      "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
+      "projectName": "aed-2026-s1",
+      "cwd": "${workspaceFolder}",
+      "vmArgs": "-Xmx4g -Xss512m",
+      "args": "${command:SpecifyProgramArgs}"
+    }
+  ]
+}

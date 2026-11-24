@@ -1,0 +1,194 @@
+Consigna 5 · estación meteorológica | parte=todo | semilla=2026 | n día=2.000.000 | n 5 días=10.000.000
+Memoria máxima de la VM: 4.096 MB
+
+====================================================================================================
+Contrato del pivote · [1, 1, 1, 2] y lecturas de un día
+====================================================================================================
+  Mayor de los dos primeros distintos    [1, 1, 1, 2] -> [1, 1, 1, 2] ordenado
+  Mediana de tres (sin corregir)         [1, 1, 1, 2] -> ArrayIndexOutOfBoundsException: ningún elemento es menor que el pivote, der se sale del vector (Index -1 out of bounds for length 4)
+  Mediana de tres (corregida)            [1, 1, 1, 2] -> [1, 1, 1, 2] ordenado
+
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+QS 2 primeros distintos     2.000.000        34,7 ms           31.266.213            3.149.598  
+QS mediana 3 sin corr.      2.000.000              -           69.211.496              386.356  StackOverflowError
+QS mediana 3 corregida      2.000.000        30,0 ms           28.166.978            3.245.522  
+
+====================================================================================================
+Parte A · Exploración de los datos
+====================================================================================================
+[1 día] n=2.000.000  mínimo=3,6 °C  máximo=24,4 °C  valores distintos=208 (rango de 209 décimas)
+  pares consecutivos: suben 47,7%  bajan 47,6%  iguales 4,7%
+  promedio por bloque de 1 h (°C):
+    9,5 8,6 8,1 8,1 8,6 9,5 10,8 12,3 14,1 15,9 17,7 19,2
+    20,5 21,4 20,4 17,9 17,5 16,5 15,2 13,7 11,9 10,1 8,3 6,8
+  muestra para graficar (1 de cada 400 lecturas): resultados/lecturas-muestra-1-dia.csv
+
+[5 días] n=10.000.000  mínimo=3,6 °C  máximo=24,8 °C  valores distintos=213 (rango de 213 décimas)
+  pares consecutivos: suben 47,7%  bajan 47,6%  iguales 4,7%
+  promedio por bloque de 6 h (°C):
+    8,7 15,0 19,1 11,0
+    8,7 15,0 20,9 11,0
+    8,7 15,0 20,4 11,0
+    8,7 15,0 18,3 11,0
+    8,7 15,0 20,8 11,0
+  muestra para graficar (1 de cada 2.000 lecturas): resultados/lecturas-muestra-5-dias.csv
+
+====================================================================================================
+Parte C · Candidatos (shellsort x 4 secuencias, heapsort) y quicksort de referencia
+====================================================================================================
+
+-- 1 día, n = 62.500 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL                62.500         3,1 ms            1.270.915              651.705  
+Shellsort HIBBARD              62.500         2,3 ms            1.155.623              511.647  
+Shellsort KNUTH                62.500         2,1 ms              960.007              589.320  
+Shellsort CIURA                62.500         2,1 ms              995.242              472.887  
+Heapsort                       62.500         3,7 ms            1.793.397              935.812  
+Quicksort (referencia)         62.500         1,1 ms              913.177              100.181  
+
+-- 1 día, n = 125.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL               125.000         4,8 ms            2.670.334            1.310.097  
+Shellsort HIBBARD             125.000         4,6 ms            2.443.233            1.032.491  
+Shellsort KNUTH               125.000         3,9 ms            2.045.780            1.231.492  
+Shellsort CIURA               125.000         3,8 ms            2.086.655              914.276  
+Heapsort                      125.000         6,9 ms            3.836.253            1.996.345  
+Quicksort (referencia)        125.000         2,1 ms            1.927.276              197.308  
+
+-- 1 día, n = 250.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL               250.000        11,2 ms            5.617.902            2.647.351  
+Shellsort HIBBARD             250.000         8,6 ms            5.139.647            2.068.028  
+Shellsort KNUTH               250.000         9,2 ms            4.213.392            2.429.444  
+Shellsort CIURA               250.000         8,5 ms            4.342.117            1.769.475  
+Heapsort                      250.000        13,4 ms            8.172.242            4.242.827  
+Quicksort (referencia)        250.000         4,2 ms            3.797.544              385.317  
+
+-- 1 día, n = 500.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL               500.000        22,9 ms           11.680.297            5.229.737  
+Shellsort HIBBARD             500.000        19,5 ms           10.817.825            4.186.711  
+Shellsort KNUTH               500.000        18,0 ms            8.955.262            5.216.452  
+Shellsort CIURA               500.000        17,5 ms            9.105.375            3.627.176  
+Heapsort                      500.000        28,7 ms           17.345.551            8.986.133  
+Quicksort (referencia)        500.000         8,4 ms            7.199.146              801.668  
+
+-- 1 día, n = 1.000.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL             1.000.000        44,1 ms           24.459.227           10.570.299  
+Shellsort HIBBARD           1.000.000        37,9 ms           22.777.920            8.547.869  
+Shellsort KNUTH             1.000.000        35,1 ms           18.758.309           10.415.076  
+Shellsort CIURA             1.000.000        33,6 ms           19.192.460            7.494.833  
+Heapsort                    1.000.000        61,0 ms           36.689.992           18.971.923  
+Quicksort (referencia)      1.000.000        15,3 ms           15.522.158            1.583.879  
+
+-- 1 día, n = 2.000.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL             2.000.000        91,2 ms           51.362.888           21.632.778  
+Shellsort HIBBARD           2.000.000        77,5 ms           47.654.595           17.196.639  
+Shellsort KNUTH             2.000.000        69,8 ms           38.280.565           20.118.908  
+Shellsort CIURA             2.000.000        67,2 ms           40.387.601           15.361.852  
+Heapsort                    2.000.000       109,1 ms           77.378.462           39.942.685  
+Quicksort (referencia)      2.000.000        38,2 ms           31.266.213            3.149.598  
+
+-- 5 días, n = 10.000.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL            10.000.000       451,3 ms          282.317.993          103.769.921  
+Shellsort HIBBARD          10.000.000       476,4 ms          273.719.261          100.518.383  
+Shellsort KNUTH            10.000.000       402,2 ms          219.025.212          118.843.854  
+Shellsort CIURA            10.000.000       381,2 ms          225.309.950           84.563.204  
+Heapsort                   10.000.000       701,9 ms          433.992.623          222.966.832  
+Quicksort (referencia)     10.000.000       195,1 ms          150.690.461           16.751.838  
+
+Resultados guardados en resultados/candidatos.csv
+
+====================================================================================================
+Permutación al azar de las lecturas de un día (mismos valores, sin el orden temporal)
+====================================================================================================
+
+-- 1 día mezclado, n = 2.000.000 --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Shellsort SHELL             2.000.000       154,8 ms           73.175.836           45.945.474  
+Shellsort HIBBARD           2.000.000       128,9 ms           60.869.938           33.788.240  
+Shellsort KNUTH             2.000.000       120,8 ms           58.500.007           43.485.953  
+Shellsort CIURA             2.000.000        97,8 ms           43.555.546           19.911.572  
+Heapsort                    2.000.000       132,0 ms           77.565.515           40.054.214  
+Quicksort (referencia)      2.000.000        49,5 ms           27.711.197            3.476.601  
+
+Resultados guardados en resultados/permutacion.csv
+
+====================================================================================================
+Parte C · Inserción directa, burbuja y selección: serie de tamaños y extrapolación
+====================================================================================================
+Regla de corte: si una corrida supera 60 s no se sigue agrandando ese algoritmo.
+
+-- Inserción directa --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Inserción directa              10.000        13,4 ms           21.046.018           21.045.955  
+Inserción directa              20.000        47,5 ms           84.065.027           84.064.970  
+Inserción directa              40.000       181,0 ms          336.426.828          336.426.757  
+Inserción directa              80.000       761,1 ms        1.344.591.809        1.344.591.748  
+Inserción directa             160.000         3,15 s        5.380.925.351        5.380.925.280  
+Inserción directa             320.000        12,27 s       21.513.839.825       21.513.839.719  
+Inserción directa             640.000        97,93 s       86.080.283.553       86.080.283.461  1 sola corrida (superó el límite)
+  corte: superó 60 s con n = 640.000
+  Extrapolación a n = 2.000.000 desde n = 640.000 con t ∝ n²: 15,9 min  (comparaciones ≈ 8,406e+11, movimientos ≈ 8,406e+11)
+  Exponente medido entre n = 320.000 y n = 640.000: b = 3,00  ->  t ≈ 49,6 min
+
+-- Burbuja --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Burbuja                        10.000        83,0 ms           49.995.000           21.036.034  
+Burbuja                        20.000       314,9 ms          199.990.000           84.045.044  
+Burbuja                        40.000         1,06 s          799.980.000          336.386.848  
+Burbuja                        80.000         4,62 s        3.199.960.000        1.344.511.832  
+Burbuja                       160.000        15,99 s       12.799.920.000        5.380.765.371  
+Burbuja                       320.000        51,24 s       51.199.840.000       21.513.519.847  
+Burbuja                       640.000        3,3 min      204.799.680.000       86.079.643.578  1 sola corrida (superó el límite)
+  corte: superó 60 s con n = 640.000
+  Extrapolación a n = 2.000.000 desde n = 640.000 con t ∝ n²: 32,5 min  (comparaciones ≈ 2,000e+12, movimientos ≈ 8,406e+11)
+  Exponente medido entre n = 320.000 y n = 640.000: b = 1,96  ->  t ≈ 31,1 min
+
+-- Selección directa --
+algoritmo                           n        mediana        comparaciones          movimientos  nota
+Selección directa              10.000        50,7 ms           49.995.000                9.988  
+Selección directa              20.000       252,3 ms          199.990.000               19.986  
+Selección directa              40.000       959,2 ms          799.980.000               39.987  
+Selección directa              80.000         1,55 s        3.199.960.000               79.984  
+Selección directa             160.000        14,13 s       12.799.920.000              159.982  
+Selección directa             320.000        58,34 s       51.199.840.000              319.982  
+Selección directa             640.000        3,9 min      204.799.680.000              639.985  1 sola corrida (superó el límite)
+  corte: superó 60 s con n = 640.000
+  Extrapolación a n = 2.000.000 desde n = 640.000 con t ∝ n²: 38,4 min  (comparaciones ≈ 2,000e+12, movimientos ≈ 6,250e+06)
+  Exponente medido entre n = 320.000 y n = 640.000: b = 2,02  ->  t ≈ 39,1 min
+
+Resultados guardados en resultados/cuadraticos.csv
+
+====================================================================================================
+Partes D y E · Percentiles
+====================================================================================================
+
+-- 1 día, n = 2.000.000 --
+Ordenando con shellsort CIURA (179,2 ms; 40.387.601 comparaciones, 15.361.852 movimientos):
+  p1  (posición 20.000) = 6,2 °C
+  p50 (posición 1.000.000) = 13,0 °C
+  p99 (posición 1.980.000) = 22,3 °C
+  Resumen por radio, p1..p99 (décimas):
+   62 67 70 72 74 75 76 77 78 79 80 81 82 82 83 84 85 85 86 87
+   88 88 89 90 91 92 92 93 94 95 96 98 99 100 101 103 104 106 108 110
+   112 113 115 118 120 122 124 126 128 130 132 134 136 138 140 142 145 147 149 151
+   152 154 156 158 160 162 163 165 166 168 169 171 172 173 174 175 176 178 179 180
+   181 182 184 185 187 190 193 196 199 202 205 207 209 211 213 215 218 220 223
+Por conteo (pregunta 15): 4,2 ms, 1101 contadores (4.404 bytes), no modifica el vector, coincide con el ordenado: sí
+
+-- 5 días, n = 10.000.000 --
+Ordenando con shellsort CIURA (735,3 ms; 225.309.950 comparaciones, 84.563.204 movimientos):
+  p1  (posición 100.000) = 6,2 °C
+  p50 (posición 5.000.000) = 13,0 °C
+  p99 (posición 9.900.000) = 22,6 °C
+  Resumen por radio, p1..p99 (décimas):
+   62 66 70 72 74 75 76 77 78 79 80 81 82 82 83 84 85 85 86 87
+   88 88 89 90 91 92 92 93 94 95 96 98 99 100 101 103 104 106 108 110
+   112 113 115 118 120 122 124 126 128 130 132 134 136 138 140 142 145 147 149 151
+   152 154 156 158 160 162 164 165 167 169 171 172 174 176 177 179 181 183 185 188
+   191 194 197 200 202 205 207 209 210 212 213 214 216 217 218 220 221 223 226
+Por conteo (pregunta 15): 8,5 ms, 1101 contadores (4.404 bytes), no modifica el vector, coincide con el ordenado: sí

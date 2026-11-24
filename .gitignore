@@ -1,0 +1,10 @@
+# compilados (Maven / VS Code)
+target/
+*.class
+
+# salidas del modo rápido del Main (pruebas, no son resultados del informe)
+resultados/*-rapido.csv
+
+# IDE
+.idea/
+*.iml

@@ -1,0 +1,13 @@
+conjunto,algoritmo,n,mediana_ms,comparaciones,movimientos,nota
+1 día mezclado,Shellsort SHELL,2000000,378.586,73175836,45945474,
+1 día mezclado,Shellsort HIBBARD,2000000,303.381,60869938,33788240,
+1 día mezclado,Shellsort KNUTH,2000000,124.957,58500007,43485953,
+1 día mezclado,Shellsort CIURA,2000000,102.110,43555546,19911572,
+1 día mezclado,Heapsort,2000000,144.926,77565515,40054214,
+1 día mezclado,Quicksort (referencia),2000000,58.425,27711197,3476601,
+permutación 0..n-1,Shellsort SHELL,2000000,338.096,155104015,138096251,
+permutación 0..n-1,Shellsort HIBBARD,2000000,338.131,151635336,138709465,
+permutación 0..n-1,Shellsort KNUTH,2000000,262.289,145959613,139996080,
+permutación 0..n-1,Shellsort CIURA,2000000,253.970,67901441,54684773,
+permutación 0..n-1,Heapsort,2000000,228.917,77588826,40096878,
+permutación 0..n-1,Quicksort (referencia),2000000,179.841,82448052,9668254,
