@@ -65,6 +65,60 @@ public abstract class TClasificador {
     protected abstract void desplazaElemento(int[] datos, int primero, int ultimo);
 
     /**
+     * Ordena el vector utilizando cuenta por distribución (clasificación por enumeración o cuenta).
+     * Admite claves repetidas; el rango de claves va del mínimo al máximo del vector
+     */
+    public abstract void cuentaPorDistribucion(int[] datos);
+
+    /**
+     * Ordena el vector utilizando binsort (clasificación por urnas), con una urna por cada
+     * valor de clave entre el mínimo y el máximo del vector. Debe admitir claves repetidas
+     */
+    public abstract void binsort(int[] datos);
+
+    /**
+     * Ordena el vector utilizando bucketsort: distribuye los elementos en cantidadUrnas urnas
+     * por intervalos de valores, ordena cada urna (por ejemplo, por inserción) y las concatena
+     */
+    public abstract void bucketsort(int[] datos, int cantidadUrnas);
+
+    /**
+     * Ordena el vector utilizando radix sort (clasificación por residuos) en base 10
+     */
+    public void radixsort(int[] datos) {
+        radixsort(datos, 10);
+    }
+
+    /**
+     * Ordena el vector utilizando radix sort (clasificación por residuos) en la base dada.
+     * Precondición: todos los valores del vector son mayores o iguales a 0, y base >= 2
+     */
+    public abstract void radixsort(int[] datos, int base);
+
+    /**
+     * método auxiliar y utilizado en radixsort
+     * realiza una pasada ESTABLE de distribución según el dígito (valor / exponente) % base
+     */
+    protected abstract void distribuirPorDigito(int[] datos, int exponente, int base);
+
+    /**
+     * método de ayuda y utilizado en cuentaPorDistribucion, binsort, bucketsort y radixsort
+     * devuelve {mínimo, máximo} de un vector no vacío
+     */
+    protected int[] obtenerRango(int[] datos) {
+        int minimo = datos[0];
+        int maximo = datos[0];
+        for (int valor : datos) {
+            if (valor < minimo) {
+                minimo = valor;
+            } else if (valor > maximo) {
+                maximo = valor;
+            }
+        }
+        return new int[]{minimo, maximo};
+    }
+
+    /**
      * método de ayuda para intercambiar valores en un vector dados sus índices
      */
     protected void intercambiar(int[] datos, int i, int j) {

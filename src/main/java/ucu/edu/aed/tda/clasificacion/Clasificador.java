@@ -1,7 +1,7 @@
 package ucu.edu.aed.tda.clasificacion;
 import ucu.edu.aed.tda.clasificacion.TClasificador;
 
-public class Clasificador implements TClasificador {
+public class Clasificador extends TClasificador {
 
     public void insercionDirecta(int[] datos){
         int n = datos.length;
@@ -75,27 +75,106 @@ public class Clasificador implements TClasificador {
      * método auxiliar y utilizado en quicksort
      * devuelve un valor del vector ubicado entre i <= x < j
      */
-    protected abstract int obtenerPivote(int[] datos, int i, int j);
+    protected int obtenerPivote(int[] datos, int i, int j) {
+        for (int k = i + 1; k <= j; k++) {
+            if (datos[k] > datos[i]) {
+                return k;
+            }
+            if (datos[k] < datos[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     /**
      * método auxiliar y utilizado en quicksort
      */
-    protected abstract int particion(int[] datos, int i, int j, int pivote);
+    protected int particion(int[] datos, int i, int j, int pivote) {
+        int izq = i;
+        int der = j;
+        while (izq <= der) {
+            while (datos[izq] < pivote) {
+                izq++;
+            }
+            while (datos[der] >= pivote) {
+                der--;
+            }
+            if (izq < der) {
+                intercambiar(datos, izq, der);
+            }
+        }
+        return izq;
+    }
 
     /**
      * Ordena el vector utilizando clasificación directa
      */
-    public abstract void clasificacionDirecta(int[] datos);
+    public void clasificacionDirecta(int[] datos){
+        // TODO
+        throw new UnsupportedOperationException("clasificacionDirecta: sin implementar");
+    }
 
     /**
      * Ordena el vector utilizando heapsort
      */
-    public abstract void heapsort(int[] datos);
+    public void heapsort(int[] datos) {
+        // TODO
+        throw new UnsupportedOperationException("heapsort: sin implementar");
+    }
 
     /**
      * método auxiliar y utilizado en heapsort
      */
-    protected abstract void desplazaElemento(int[] datos, int primero, int ultimo);
+    protected void desplazaElemento(int[] datos, int primero, int ultimo) {
+        // TODO
+        throw new UnsupportedOperationException("desplazaElemento: sin implementar");
+    }
+
+    /**
+     * Ordena el vector utilizando cuenta por distribución (clasificación por enumeración o cuenta).
+     * Admite claves repetidas; el rango de claves va del mínimo al máximo del vector
+     */
+    public void cuentaPorDistribucion(int[] datos) {
+        // TODO
+        throw new UnsupportedOperationException("cuentaPorDistribucion: sin implementar");
+    }
+
+    /**
+     * Ordena el vector utilizando binsort (clasificación por urnas), con una urna por cada
+     * valor de clave entre el mínimo y el máximo del vector. Debe admitir claves repetidas
+     */
+    public void binsort(int[] datos) {
+        // TODO
+        throw new UnsupportedOperationException("binsort: sin implementar");
+    }
+
+    /**
+     * Ordena el vector utilizando bucketsort: distribuye los elementos en cantidadUrnas urnas
+     * por intervalos de valores, ordena cada urna (por ejemplo, por inserción) y las concatena
+     */
+    public void bucketsort(int[] datos, int cantidadUrnas) {
+        // TODO
+        throw new UnsupportedOperationException("bucketsort: sin implementar");
+    }
+
+    /**
+     * Ordena el vector utilizando radix sort (clasificación por residuos) en la base dada.
+     * Precondición: todos los valores del vector son mayores o iguales a 0, y base >= 2
+     */
+    public void radixsort(int[] datos, int base) {
+        // TODO
+        throw new UnsupportedOperationException("radixsort: sin implementar");
+    }
+
+    /**
+     * método auxiliar y utilizado en radixsort
+     * realiza una pasada ESTABLE de distribución según el dígito (valor / exponente) % base
+     */
+    protected void distribuirPorDigito(int[] datos, int exponente, int base) {
+        // TODO
+        throw new UnsupportedOperationException("distribuirPorDigito: sin implementar");
+    }
 
     /**
      * método de ayuda para intercambiar valores en un vector dados sus índices
