@@ -28,6 +28,8 @@ Una estación meteorológica guarda 2.000.000 de lecturas de temperatura por dí
 | `Main` | Mide todo y genera `resultados/*.csv` |
 | `datos.*` | Paquete dado por la cátedra: generadores, `Medidor`, `ArchivoDatos` |
 
+**Tests:** `src/test/java/.../ClasificadorTest.java` (JUnit 4) comprueba que cada método de ordenación de `Clasificador` deje el vector igual que `Arrays.sort`. Usa casos borde, repetidos, negativos y vectores ya ordenados y al revés. Para shellsort prueba las 4 secuencias. Se corren desde VS Code (pestaña Testing) o con `mvn test`.
+
 ## Cómo ejecutar
 
 Hay que ejecutar **desde esta carpeta**, para que el programa encuentre `datos/` y escriba en `resultados/`. Usar siempre `-Xmx4g -Xss512m`.
