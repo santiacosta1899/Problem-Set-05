@@ -26,6 +26,7 @@ Una estación meteorológica guarda 2.000.000 de lecturas de temperatura por dí
 | `Percentiles` | Posición del percentil p (⌈p·n/100⌉), percentiles desde un vector ordenado y **por conteo** (pregunta 15) |
 | `ClasificadorMedianaDeTres` | Pivote «mediana de tres», sin corregir y corregido (preguntas del contrato del pivote) |
 | `Main` | Mide todo y genera `resultados/*.csv` |
+| `DemoPresentacion` | Demo de la defensa, de unos segundos: contrato del pivote, Ciura contra heapsort con las 2M lecturas y percentiles. Se corre con la configuración "DEMO presentación" |
 | `datos.*` | Paquete dado por la cátedra: generadores, `Medidor`, `ArchivoDatos` |
 
 **Tests:** `src/test/java/.../ClasificadorTest.java` (JUnit 4) comprueba que cada método de ordenación de `Clasificador` deje el vector igual que `Arrays.sort`. Usa casos borde, repetidos, negativos y vectores ya ordenados y al revés. Para shellsort prueba las 4 secuencias. Se corren desde VS Code (pestaña Testing) o con `mvn test`.

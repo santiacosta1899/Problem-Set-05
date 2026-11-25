@@ -3,23 +3,35 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Consigna 5 · todo (≈25 min)",
+      "name": "DEMO presentación",
       "request": "launch",
-      "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
+      "mainClass": "ucu.edu.aed.tda.clasificacion.DemoPresentacion",
       "projectName": "aed-2026-s1",
       "cwd": "${workspaceFolder}",
       "vmArgs": "-Xmx4g -Xss512m",
-      "args": "todo"
+      "console": "integratedTerminal"
     },
     {
       "type": "java",
-      "name": "Consigna 5 · candidatos rápido (corrida en vivo)",
+      "name": "Consigna 5 · todo (≈30 min)",
       "request": "launch",
       "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
       "projectName": "aed-2026-s1",
       "cwd": "${workspaceFolder}",
       "vmArgs": "-Xmx4g -Xss512m",
-      "args": "candidatos rapido"
+      "args": "todo",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "Consigna 5 · candidatos rápido",
+      "request": "launch",
+      "mainClass": "ucu.edu.aed.tda.clasificacion.Main",
+      "projectName": "aed-2026-s1",
+      "cwd": "${workspaceFolder}",
+      "vmArgs": "-Xmx4g -Xss512m",
+      "args": "candidatos rapido",
+      "console": "integratedTerminal"
     },
     {
       "type": "java",
@@ -29,7 +41,8 @@
       "projectName": "aed-2026-s1",
       "cwd": "${workspaceFolder}",
       "vmArgs": "-Xmx4g -Xss512m",
-      "args": "pivote"
+      "args": "pivote",
+      "console": "integratedTerminal"
     },
     {
       "type": "java",
@@ -39,7 +52,8 @@
       "projectName": "aed-2026-s1",
       "cwd": "${workspaceFolder}",
       "vmArgs": "-Xmx4g -Xss512m",
-      "args": "${command:SpecifyProgramArgs}"
+      "args": "${command:SpecifyProgramArgs}",
+      "console": "integratedTerminal"
     }
   ]
 }

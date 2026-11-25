@@ -372,7 +372,7 @@ Los 99 percentiles del resumen por radio, en décimas: 62 67 70 72 74 75 76 77 7
 3. Al final del día se recorren los contadores acumulando. El percentil p es el primer valor cuya cuenta acumulada alcanza la posición ⌈p·n/100⌉. Como los percentiles van en orden, alcanza con un solo recorrido de los 1.101 contadores para los 99.
 
 - **No compara elementos entre sí.** Cada lectura solo se usa como índice. El costo es n incrementos más 1.101 sumas, o sea O(n + k) con k = 1.101.
-- **Memoria:** 1.101 contadores de 32 bits son **4.404 bytes**, contra 8 MB del arreglo de 2M `int`. No alcanza con 16 bits: un valor llega a repetirse 27.580 veces en un día y, en un día de temperatura constante, podría repetirse 2.000.000 de veces.
+- **Memoria:** 1.101 contadores de 32 bits son **4.404 bytes**, contra 8 MB del arreglo de 2M `int`. No conviene usar 16 bits, que llegan como máximo a 65.535. Con estos datos el valor más repetido aparece 27.580 veces en un día, así que entraría. Pero un contador tiene que aguantar el peor caso: en un día de temperatura casi constante, un mismo valor podría repetirse hasta 2.000.000 de veces, y en el resumen de 5 días hasta 10.000.000. Por eso se necesitan 32 bits.
 - **¿Respeta las restricciones?** Sí, y mejor que cualquier ordenamiento:
   - la memoria no depende de n;
   - no hay recursión;
